@@ -1,19 +1,19 @@
-import * as d3 from "d3";
 import Shape from "./Shape";
-
 export default class Rectangle extends Shape{
 
     x:number;
     y:number;
     width:number;
     height:number;
+    label:string;
 
-    constructor(x:number, y:number, width: number, height: number, svg: SVGElement){
+    constructor(x:number, y:number, width: number, height: number, svg: SVGElement, label:string){
         super("rect", svg);
         this.x = x - this.svgPosition.left;
         this.y = y - this.svgPosition.top - height/2;
         this.width = width;
         this.height = height;
+        this.label = label;
     }
 
     draw(){
@@ -23,5 +23,6 @@ export default class Rectangle extends Shape{
         .attr("x",this.x+"")
          .attr("y",this.y+"")
         .attr("fill","blue");
+        this.addTitle(this.label);
     }
 } 

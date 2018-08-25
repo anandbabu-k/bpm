@@ -2,13 +2,16 @@ import * as d3 from 'd3';
 import Circle from './Circle';
 import Line from './Line';
 import Rectangle from './Rectangle';
+import Rhombus from './Rhombus';
 import Shape from './Shape';
+
+ 
 
 export default class BPM {
 
     private root: any;
     svg: SVGElement;
-
+     type:  HTMLElement
     constructor(root :object){
         this.root = root;
     }
@@ -31,18 +34,22 @@ export default class BPM {
                 switch(node.type){
                     case "start":      
                     case "end":
-                        shape = new Circle(previousElementPosition.right, previousElementPosition.top, svg);
+                        shape = new Circle(previousElementPosition.right, previousElementPosition.top, svg, node.label);
+                        shape.draw();
+                        break;
+                    case "rhombus": 
+                        shape = new Rhombus(previousElementPosition.right,previousElementPosition.top,svg,node.label);
                         shape.draw();
                         break;
                     case "activity": 
-                        shape = new Rectangle(previousElementPosition.right, previousElementPosition.top, 100, 60, svg);
-                        shape.draw();
+                        shape = new Rectangle(previousElementPosition.right, previousElementPosition.top, 100, 60, svg, node.label);
+                        shape.draw();                   
                         break;
                 }
                 if(node.next){
                     var position = shape.element.getBoundingClientRect();
                     shape = new Line(position.right, position.right + 120, position.top + position.height / 2, position.top + position.height / 2, svg);
-                    shape.draw();
+                    shape.draw();               
                     node = node.next;
                     previousElement = shape;
                     previousElementPosition = previousElement.element.getBoundingClientRect();

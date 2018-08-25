@@ -1,6 +1,4 @@
-import * as d3 from 'd3';
 import Shape from './Shape';
-
 export default class Line extends Shape{
 
     element: SVGLineElement;
@@ -24,6 +22,6 @@ export default class Line extends Shape{
             .attr("x2",this.x2+"")
             .attr("y2",this.y2+"").attr("stroke-width", "5")
             .attr("stroke","green");
-    }
+    } 
 
 }
