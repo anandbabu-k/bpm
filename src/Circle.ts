@@ -22,7 +22,7 @@ export default class Circle extends Shape{
         this.attr("cx", this.cx+"")
             .attr("cy", this.cy+"")
             .attr("r",  this.r+"")
-            .attr("fill", "green");
+            .attr("fill", "#88d588");
         this.addTitle(this.label);
     }
         

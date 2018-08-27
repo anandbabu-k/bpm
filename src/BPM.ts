@@ -1,5 +1,6 @@
 import * as d3 from 'd3';
 import Circle from './Circle';
+import End from './End';
 import Line from './Line';
 import Rectangle from './Rectangle';
 import Rhombus from './Rhombus';
@@ -32,9 +33,12 @@ export default class BPM {
         while(node){
                 var shape:Shape = null;
                 switch(node.type){
-                    case "start":      
+                    case "start": 
+                    shape = new Circle(previousElementPosition.right, previousElementPosition.top, svg, node.label);
+                    shape.draw();
+                    break;
                     case "end":
-                        shape = new Circle(previousElementPosition.right, previousElementPosition.top, svg, node.label);
+                        shape = new End(previousElementPosition.right, previousElementPosition.top, svg, node.label);
                         shape.draw();
                         break;
                     case "rhombus": 

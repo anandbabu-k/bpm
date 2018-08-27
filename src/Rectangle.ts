@@ -22,7 +22,7 @@ export default class Rectangle extends Shape{
         .attr("height",this.height+"")
         .attr("x",this.x+"")
          .attr("y",this.y+"")
-        .attr("fill","blue");
+        .attr("fill","#64b7da");
         this.addTitle(this.label);
     }
 } 

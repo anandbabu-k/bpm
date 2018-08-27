@@ -21,6 +21,7 @@ export default class Rhombus extends Shape {
         let x = this.x;
         let y = this.y;
         this.attr("points", (x+ ","+y+" "+(x+width)+","+(y-height)+" " +(x+width*2)+","+(y)+" "+ (x+width)+","+(y+height))+"")
+        .attr("fill","#e8b14d");
         this.addTitle(this.label);
     }
 
